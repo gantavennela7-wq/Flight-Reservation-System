@@ -1,0 +1,52 @@
+## db_connect.php
+<?php
+$conn=mysqli_connect("localhost","root","","flight_db");
+if(!$conn){
+die("Connection Failed");
+}
+?>
+
+## add_booking.php
+<?php
+include "db_connect.php";
+$name=$_POST['name'];
+$age=$_POST['age'];
+$phone=$_POST['phone'];
+$flight=$_POST['flight'];
+$seat=$_POST['seat'];
+$sql1="INSERT INTO passengers(passenger_name,age,phone) VALUES('$name','$age','$phone')";
+mysqli_query($conn,$sql1);
+$passenger_id=mysqli_insert_id($conn);
+$sql2="INSERT INTO bookings(passenger_id,flight_id,seat_no,status) VALUES('$passenger_id','$flight','$seat','Confirmed')";
+if(mysqli_query($conn,$sql2)){
+echo "Booking Successful";
+}
+else{
+echo "Error";
+}
+?>
+
+## fetch_bookings.php
+<?php
+include "db_connect.php";
+$sql="SELECT b.booking_id,p.passenger_name,f.flight_name,b.seat_no,b.status FROM bookings b JOIN passengers p ON b.passenger_id=p.passenger_id JOIN flights f ON b.flight_id=f.flight_id";
+$result=mysqli_query($conn,$sql);
+$data=[];
+while($row=mysqli_fetch_assoc($result)){
+$data[]=$row;
+}
+echo json_encode($data);
+?>
+
+## delete_booking.php
+<?php
+include "db_connect.php";
+$id=$_POST['id'];
+$sql="DELETE FROM bookings WHERE booking_id='$id'";
+if(mysqli_query($conn,$sql)){
+echo "Deleted Successfully";
+}
+else{
+echo "Error";
+}
+?>
