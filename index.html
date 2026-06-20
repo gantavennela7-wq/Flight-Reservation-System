@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flight Reservation System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<h1>Flight Reservation System</h1>
+<form id="bookingForm">
+<input type="text" id="name" placeholder="Passenger Name" required>
+<input type="number" id="age" placeholder="Age" required>
+<input type="text" id="phone" placeholder="Phone Number" required>
+<input type="number" id="flight" placeholder="Flight ID" required>
+<input type="text" id="seat" placeholder="Seat Number" required>
+<button type="submit">Book Flight</button>
+</form>
+<h2>Booking Details</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Passenger</th>
+<th>Flight</th>
+<th>Seat</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="bookingList"></tbody>
+</table>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
