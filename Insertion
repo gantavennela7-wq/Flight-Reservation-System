@@ -1,0 +1,5 @@
+INSERT INTO flights
+(flight_name,source,destination,flight_date,seats)
+VALUES
+('Air India','Hyderabad','Delhi','2026-07-01',120),
+('Indigo','Chennai','Mumbai','2026-07-02',150);
