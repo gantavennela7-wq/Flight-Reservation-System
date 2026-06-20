@@ -1,0 +1,12 @@
+SELECT
+p.passenger_name,
+f.flight_name,
+f.source,
+f.destination,
+b.seat_no,
+b.status
+FROM bookings b
+JOIN passengers p
+ON b.passenger_id=p.passenger_id
+JOIN flights f
+ON b.flight_id=f.flight_id;
